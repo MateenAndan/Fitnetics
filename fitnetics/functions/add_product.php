@@ -36,5 +36,16 @@ if (isset($_POST['add_product'])){
 
 }
 
+if (isset($_GET['delete'])){
+	$productID= $_GET['delete'];
+	$check= delete_product_ctr($productID);
+	if ($check) {
+		header("location:../admin/product.php");
+	} else {
+		echo "fail";
+	}
+
+}
+
 
 ?>

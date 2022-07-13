@@ -49,7 +49,7 @@ if ($adminn == 1) {
 					<a class="nav-link" href="../login/logout.php">Logout</a>
 				</li>
 			</ul>
-			<form  role="search" action="../view/product_search_result.php" method="POST" class="d-flex">
+			<form  role="search" action="../view/search_result.php" method="POST" class="d-flex">
 				<input class="form-control me-2" type="text" placeholder="Search"  name="find">
 				<button class="btn btn-primary" type="submit" name="submit22">Search</button>
 			</form>

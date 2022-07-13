@@ -19,5 +19,15 @@ if (isset($_POST['add_category'])){
 	}
 }
 
+if (isset($_GET['delete'])){
+	$categoryID= $_GET['delete'];
+	$check= delete_category_ctr($categoryID);
+	if ($check) {
+		header("location:../admin/category.php");
+	} else {
+		echo "fail";
+	}
+
+}
 
 ?>

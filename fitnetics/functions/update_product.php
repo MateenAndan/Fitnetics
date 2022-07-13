@@ -8,7 +8,6 @@ if (isset($_POST['update_product'])){
 	//grab from data
 	$target= "../images/".basename($_FILES['pimage']['name']);
 	$pidd = ($_POST['pidd']);
-	$pbrand = ($_POST['pbrand']);
 	$pcat = ($_POST['pcat']);
 	$ptitle = ($_POST['ptitle']);
 	$pprice = ($_POST['pprice']);
@@ -19,7 +18,7 @@ if (isset($_POST['update_product'])){
 	
 
 	//call a controller
-	$check = update_product_ctr($pidd,$pbrand,$pcat,$ptitle,$pprice,$pdesc,$pimage,$pkey);
+	$check = update_product_ctr($pidd,$pcat,$ptitle,$pprice,$pdesc,$pimage,$pkey);
 
 	if ($check){
 		header("location:../admin/product.php");

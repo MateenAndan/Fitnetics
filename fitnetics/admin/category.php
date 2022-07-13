@@ -46,8 +46,8 @@ include("anavbar.php");
 				 		<td>$cid</td>
 						<td>$cname</td>
 						<td>
-						<a class ='btn btn-primary btn-sm' href='../view/update_category_page.php?cid=$cid'>Update</a>
-						<a class = 'btn btn-danger btn-sm remove'>Delete</a>
+						<a class ='btn btn-primary btn-sm' href='update_category_page.php?cid=$cid'>Update</a>
+						<a class = 'btn btn-danger btn-sm' href='../functions/add_category.php?delete=$cid'>Delete</a>
 						</td>
 					</tr>";
 				}

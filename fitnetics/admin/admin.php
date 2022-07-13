@@ -64,8 +64,7 @@ include("anavbar.php");
 				<div class='card-body style='font-size:20px;' >
 				Name: $product_title <br>
 				Price:  GHS $product_price <br> <br> 
-				<a href='../functions/add_to_cart.php?pid=$product_id' class='btn btn-primary'>Add to Cart</a>
-				<a href='single_product.php?vid=$product_id' class='btn btn-primary'>View</a>
+				<div class='text-center'><a class='btn btn-outline-dark mt-auto' href='single_product_admin.php?vid=$product_id''>View Product</a></div>
 				</div>
 				</div>
 				

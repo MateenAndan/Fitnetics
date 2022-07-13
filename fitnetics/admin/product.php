@@ -56,9 +56,9 @@ include("anavbar.php");
 					<td>$pkey</td>
 
 					<td>
-					<a class ='btn btn-primary btn-sm' href='../view/view_product_page.php?pid=$pid'>View</a>
-					<a class ='btn btn-primary btn-sm' href='../view/update_product_page.php?pid=$pid'>Update</a>
-					<a class = 'btn btn-danger btn-sm remove'>Delete</a>
+					<a class ='btn btn-primary btn-sm' href='single_product_admin.php?vid=$pid'>View</a>
+					<a class ='btn btn-primary btn-sm' href='update_product_page.php?pid=$pid'>Update</a>
+					<a class = 'btn btn-danger btn-sm' href='../functions/add_product.php?delete=$pid'>Delete</a>
 					</td>
 					</tr>";
 				}

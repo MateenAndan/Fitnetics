@@ -90,9 +90,15 @@ class product_class extends db_connection{
 
 
 	//--DELETE--//
-	function delete_brand_cls($bid){
-		$sql = "DELETE FROM brands WHERE brand_id='$bid'";
-	}
+    function delete_category_cls($categoryID){
+        $sql= "DELETE FROM categories WHERE cat_id='$categoryID'" ;
+        return $this->db_query($sql);
+    }
+
+    function delete_product_cls($productID){
+         $sql= "DELETE FROM products WHERE product_id='$productID'" ;
+         return $this->db_query($sql);
+     }
 
 }
 ?>

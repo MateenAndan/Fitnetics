@@ -1,6 +1,7 @@
 <?php
+// include("../settings/core.php");
+include("navbar.php");
 include("../controllers/cart_controller.php");
-include("../settings/core.php");
 $c_id= get_id();
 $cartlist=view_cart_ctr($c_id);
 $total= select_total_qty_from_cart_ctr($c_id);
@@ -14,103 +15,111 @@ $grandtotal1=$grandtotal['SUM(products.product_price*cart.qty)'];
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Fitnetics Cart</title>
-	<link rel="stylesheet" type="text/css" href="../css/ccss.css">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,900" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cart</title>
 </head>
 <body>
 
-  <?php
-  foreach ($cartlist as $oneproduct) {
-    $product_id = $oneproduct['product_id'];
-    $product_title = $oneproduct['product_title'];
-    $product_price = $oneproduct['product_price'];
-    $product_image = $oneproduct['product_image'];
-    $product_qty=  $oneproduct['qty'];
-    $itemtotal_price= $product_price * $product_qty;
+  <br>
+  <br>
+  <h4>Items in cart</h4>
 
-    if($product_qty ==1){
-      echo"   
-      <div class='CartContainer'>   
-      <div class='Header'>
-      <h3 class='Heading'>Shopping Cart</h3>
-      </div>
+  <div style="display: flex; ">
+    <div class="container" style=" flex: 2; ">
+      <div class='row row-cols-1 row-cols-md-3 g-4' >
+        <?php
+        foreach ($cartlist as $oneproduct) {
+          $product_id = $oneproduct['product_id'];
+          $product_title = $oneproduct['product_title'];
+          $product_price = $oneproduct['product_price'];
+          $product_image = $oneproduct['product_image'];
+          $product_qty=  $oneproduct['qty'];
+          $itemtotal_price= $product_price * $product_qty;
+          
+          if($product_qty ==1){
+            echo"              
+            <div class='card-columns'>  
+            <div class='card'>
+            <img src=' ../images/$product_image' class='card-img-top' style='height: 350px; ' >
+            <div class='card-body style='font-size:20px;' >
+            Name: $product_title <br>
+            Price:  GHS $product_price <br>
+            Quantity:   $product_qty <br>
+            Total:  GHS $itemtotal_price <br> <br> 
+            <a href='#' class='btn btn-secondary ' disabled>-</a>
+            $product_qty
+            <a href='../functions/manage_cart.php?update1=$product_id' class='btn btn-outline-dark mt-auto'>+</a>
+            <a href='../functions/remove_from_cart.php?delete=$product_id' class='btn btn-outline-dark mt-auto '>Remove</a>
+            </div>
+            </div>
 
-      <div class='Cart-Items pad'>
-      <div class='image-box'>
-      <img src='../images/$product_image' style={{ height='120px' }} />
-      </div>
-      <div class='about'>
-      <h1 class='title'>$product_title</h1>
-      <img src='../images/$product_image' style={{ height='30px' }}/>
-      </div>
-      <div class='counter'>
-      <div class='btn'><a href='../functions/manage_cart.php?update1=$product_id'>+</a></div>
-      <div class='count'>$product_qty</div>
-      <div class='btn' disabled>-</div>
-      </div>
-      <div class='prices'>
-      <div class='amount'>GHS $product_price</div>
-      <div class='remove'><u>Remove</u></div>
-      </div>
-      </div>
-      <hr> 
-      <div class='checkout'>
-      <div class='total'>
-      <div>
-      <div class='Subtotal'>Sub-Total</div>
-      <div class='items'>$total1 items</div>
-      </div>
-      <div class='total-amount'>GHS $grandtotal1</div>
-      </div>
-      <button class='button'>Checkout</button></div>
-      </div>
-      </div>
-      ";
-    }
-    else {
-      echo "
-            <div class='CartContainer'> 
-      <div class='Header'>
-      <h3 class='Heading'>Shopping Cart</h3>
-      </div>
+            </div>                 
+            ";
+          }
+          else {
+            echo "                 
+            <div class='card-columns'>  
+            <div class='card'>
+            <img src=' ../images/$product_image' class='card-img-top' style='height: 350px; ' >
+            <div class='card-body style='font-size:20px;' >
+            Name: $product_title <br>
+            Price:  GHS $product_price <br>
+            Quantity:   $product_qty <br> 
+            Total:  GHS $itemtotal_price <br><br>
+            <a href='../functions/manage_cart.php?decrease=$product_id' class='btn btn-outline-dark mt-auto'>-</a>
+            $product_qty
+            <a href='../functions/manage_cart.php?update1=$product_id' class='btn btn-outline-dark mt-auto'>+</a>
+            <a href='../functions/remove_from_cart.php?delete=$product_id' class='btn btn-outline-dark mt-auto'>Remove</a>
+            </div>
+            </div>
 
-      <div class='Cart-Items pad'>
-      <div class='image-box'>
-      <img src='../images/$product_image' style={{ height='120px' }} />
-      </div>
-      <div class='about'>
-      <h1 class='title'>$product_title</h1>
-      <img src='../images/$product_image' style={{ height='30px' }}/>
-      </div>
-      <div class='counter'>
-      <div class='btn'><a href='../functions/manage_cart.php?update1=$product_id'>+</a></div>
-      <div class='count'>$product_qty</div>
-      <div class='btn'><a href='../functions/manage_cart.php?decrease=$product_id'>-</a></div>
-      </div>
-      <div class='prices'>
-      <div class='amount'>GHS $product_price</div>
-      <div class='remove'><u>Remove</u></div>
-      </div>
-      </div>
-      <hr> 
-      <div class='checkout'>
-      <div class='total'>
-      <div>
-      <div class='Subtotal'>Sub-Total</div>
-      <div class='items'>$total1 items</div>
-      </div>
-      <div class='total-amount'>GHS $grandtotal1</div>
-      </div>
-      <button class='button'>Checkout</button></div>
-      </div>
-      </div>
+            </div>
 
+            ";
 
-      ";
-    }
-  }
-  ?>
+          }
+
+          if (empty($product_qty)) {
+            // code...
+            echo "<h4>Items in cart</h4>";
+          }
+
+        }
+        ?>
+      </div>
+    </div>
+    <div style=" min-height: 400px; flex: 1.5;  ">
+      <div class="container" style="margin-top: 40px;">
+        <div class="card">
+          <div class="card-header"><h4>Cart Summary</h4> </div>
+          <div class="card-body">
+            <?php
+            foreach ($cartlist as $oneproduct) {
+
+              $product_title = $oneproduct['product_title'];
+              $product_price = $oneproduct['product_price'];
+              $product_qty=  $oneproduct['qty'];
+              $itemtotal_price= $product_price * $product_qty;
+              echo "<h6>$product_title ($product_qty): GHS $itemtotal_price</h6> <br>";
+            }
+
+            ?>
+
+            <?php
+
+            echo"<h6>Total Price: GHS $grandtotal1</h6> <br>";
+
+            ?>
+          </div> 
+          <div class="card-footer">
+            <a href='payment.php' class='btn btn-success mt-auto'>Check Out</a> <br> <br>
+            <a href='homepage.php' class='btn btn-outline-dark mt-auto'>Continue Shopping</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
-

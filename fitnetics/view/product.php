@@ -22,166 +22,64 @@ include("../functions/product_functions.php");
 
 </head>
 
-<body class="sub_page">
+<body>
+  <!-- Section-->
+  <section class="py-5">
+    <h2 style="text-align: center;">New products</h2>
+    <div class="container px-4 px-lg-5 mt-5">
+      <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <?php
 
-  <!-- product section -->
+        $productlist = get_all_product_ctr();
+        foreach ($productlist as $aproduct) {
+          $product_id = $aproduct['product_id'];
+          $product_title = $aproduct['product_title'];
+          $product_price = $aproduct['product_price'];
+          $product_image = $aproduct['product_image'];
+          $product_desc = $aproduct['product_desc'];
+          echo "
+          <div class='col mb-5'>
+          <div class='card h-100'>
+          <!-- Product image-->
+          <img class='card-img-top' src='../images/$product_image' alt='product image'/>
+          <!-- Product details-->
+          <div class='card-body p-4'>
+          <div class='text-center'>
+          <!-- Product name-->
+          <h5 class='fw-bolder'>$product_title</h5>
+          <!-- Product product desc-->
+          Description :$product_desc
+          <br>
+          <!-- Product price-->
+          GHS $product_price
+          </div>
+          </div>
+          <!-- Product actions-->
+          <div class='card-footer p-4 pt-0 border-top-0 bg-transparent'>
+          <div class='text-center'><a class='btn btn-outline-dark mt-auto' href='../functions/add_to_cart.php?pid=$product_id''>Add to cart</a></div>
+          </div>
 
-      <section class='product_section layout_padding'>
-      
-      <div class='heading_container heading_center'>
-      <h2>
-      New products
-      </h2>
-      </div>
-        <?php 
-    $productlist = get_all_product_ctr();
-    foreach ($productlist as $aproduct) {
-      $product_id = $aproduct['product_id'];
-      $product_title = $aproduct['product_title'];
-      $product_price = $aproduct['product_price'];
-      $product_image = $aproduct['product_image'];
-      echo "
-      <div class='container'>
-        <div class='product_container'>
-        <div class='row'>
-        <div class='col-sm-6 col-md-4'>
-        <div class='box'>
-        <a href='../functions/add_to_cart.php?pid=$product_id' class='p_cart'>
-        <i class='fa fa-cart-plus' aria-hidden='true'></i>
-        </a>
-        <div class='img-box'>
-        <img src='../images/$product_image' alt=''>
-        </div>
-        <div class='detail-box'>
-        <a href='single_product.php?vid=$product_id' class='p_name'>
-        $product_title
-        </a>
-        <h6 class='p_price'>
-        <span class='new_price'>
-        GHS $product_price
-        </span>
-        </h6>
-        </div>
-        </div>
-        </div>
-        </div>
-              </div>
-        </div>
-         ";
-    }
-     ?>
+          <div class='card-footer p-4 pt-0 border-top-0 bg-transparent'>
+          <div class='text-center'><a class='btn btn-outline-dark mt-auto' href='single_product.php?vid=$product_id''>View Product</a></div>
+          </div>
+          </div>
+          </div>
+          ";
+        }
 
+        ?>
 
-
-      <div class='btn-box'>
-      <a href=''>
-      See More
-      </a>
-      </div>
-
-      </section>
-
-
-   
- <!-- 
-  <div class="btn-box">
-    <a href="">
-      See More
-    </a>
-  </div>
-</div>
-</section> -->
-
-
-<!-- end product section -->
-
-<!-- info section -->
-
-<section class="info_section layout_padding2">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9 mx-auto">
-        <h4>
-          Contact Us
-        </h4>
-        <div class="contact_items">
-          <a href="">
-            <div class="img-box">
-              <i class="fa fa-map-marker" aria-hidden="true"></i>
-            </div>
-            <h6>
-              Location
-            </h6>
-          </a>
-          <a href="">
-            <div class="img-box">
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-            </div>
-            <h6>
-              demo@gmail.com
-            </h6>
-          </a>
-          <a href="">
-            <div class="img-box">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-            </div>
-            <h6>
-              (+12 1234456789)
-            </h6>
-          </a>
-        </div>
       </div>
     </div>
-
-    <div class="box">
-      <div class="info_social">
-        <div>
-          <a href="">
-            <i class="fa fa-facebook" aria-hidden="true"></i>
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <i class="fa fa-twitter" aria-hidden="true"></i>
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <i class="fa fa-linkedin" aria-hidden="true"></i>
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <i class="fa fa-instagram" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- end info section -->
-<!-- footer section -->
-<section class="footer_section">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-7 col-md-9 mx-auto">
-        <p>
-          &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Free Html Templates</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- footer section -->
-
-
-<!-- jQery -->
-<!-- Google Map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
-</script>
-<!-- End Google Map -->
+  </section>
+  <!-- Footer-->
+  <footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Fitnetics 2022</p></div>
+  </footer>
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="../js/scripts.js"></script>
 </body>
 
 </html>

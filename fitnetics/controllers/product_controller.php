@@ -85,13 +85,18 @@ function update_category_ctr($cnamee,$cidd){
 
 function update_product_ctr($pidd,$pcat,$ptitle,$pprice,$pdesc,$pimage,$pkey){
   $update_cat = new product_class();
-  return $update_cat->update_product_cls($pidd,$pbrand,$pcat,$ptitle,$pprice,$pdesc,$pimage,$pkey);
+  return $update_cat->update_product_cls($pidd,$pcat,$ptitle,$pprice,$pdesc,$pimage,$pkey);
 }
 
 //--DELETE--//
-function delete_brand_ctr($bid){
-  $delete_brand = new product_class();
-  return $delete_brand->delete_brand_cls($bid);
+function delete_category_ctr($categoryID){
+  $log= new product_class;
+  return $log -> delete_category_cls($categoryID);
+}
+
+function delete_product_ctr($productID){
+  $log= new product_class;
+  return $log -> delete_product_cls($productID);
 }
 
 
